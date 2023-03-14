@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <!DOCTYPE html>
+    <html>
+
+    <head>
+        <title>Insert Data into Table</title>
+    </head>
+
+    <body>
+        <div class="container">
+            <h1>Insert Data into Table</h1>
+            <div class="form">
+                <form method="post" id="myform">
+                    <label for="fname">First Name:</label>
+                    <input type="text" id="fname" name="fname" value="" required>
+
+                    <label for="last_name">Last name:</label>
+                    <input type="text" id="last_name" name="last_name" value="" required>
+
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" name="address" value="" required>
+
+                    <label for="position">Position:</label>
+                    <input type="text" id="position" name="position" value="" required>
+
+                    <label for="department">Department:</label>
+                    <input type="text" id="department" name="department" value="" required>
+
+                    <input type="submit" id="submit" value="Insert">
+                </form>
+            </div>
+            <div class="table">
+            <h2>Table "Office"</h2>
+            
+                <table id="mytable">
+                    <thead>
+                        <tr>
+                            <th>First name</th>
+                            <th>Last name</th>
+                            <th>Address</th>
+                            <th>Position</th>
+                            <th>Department</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <script>
+            $(document).ready(function () {
+                $(".table").hide();
+                $("#submit").click(function () {
+                    event.preventDefault();
+                    $.ajax({
+                        url: "connection.php",
+                        type: "POST",
+                        data: $('#myform').serialize(),
+                        dataType: 'text',
+                        // data: { fname: 'fname', last_name: 'last_name', address: 'address', position: 'position', department: 'department' },
+                        success: function (response) {
+                            $(".table").show();
+                            $('#mytable tbody').append('<tr><td>' + $('#fname').val()
+                                + '</td><td>' + $('#last_name').val() + '</td><td>' + $('#address').val() + '</td><td>'
+                                + $('#position').val() + '</td><td>' + $('#department').val() + '</td></tr>');
+                            $('#fname').val('');
+                            $('#last_name').val('');
+                            $('#address').val('');
+                            $('#position').val('');
+                            $('#department').val('');
+                        }
+                    });
+
+                });
+            });
+        </script>
+
+    </body>
+
+    </html>
+</body>
+
+</html>
