@@ -42,6 +42,18 @@ $last_name = $_POST['last_name'];
 $address = $_POST['address'];
 $position = $_POST['position'];
 $department = $_POST['department'];
+$pattern = "/^[a-zA-Z ]{1,30}$/";
+
+
+// if (!(preg_match('([A-Z][a-z]*)([\\s\\\'-][A-Z][a-z]*)*', $fname))) {
+//   echo "<script>alert('Invalid First Name')</script>";
+//   return;
+// }
+
+// if (!(preg_match('([A-Z][a-z]*)([\\s\\\'-][A-Z][a-z]*)*', $last_name))) {
+//   echo "<script>alert('Invalid Last Name')</script>";
+//   return;
+// }
 
 $sql = "INSERT INTO office (First_name, Last_name , Address , Position , Department
 ) VALUES ('$fname','$last_name','$address','$position', '$department')";
