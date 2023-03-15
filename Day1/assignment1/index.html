@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <title>Document</title>
+    <script src="script.js"></script>
 </head>
 <body>
     <h1>Ajax tutorial</h1>
@@ -15,26 +16,7 @@
 
 
     <p>Demo text</p>
+   
     
-    <script>
-        $(document).ready(function(){
-            
-            $("#submit").click(function(){
-               
-                var abc = $('#text').val();
-                    $.ajax({
-                    url: "1.php",
-                    type: "POST",
-                    dataType:'text',
-                    data: {text: abc},
-                    success: function(result){
-                        console.log(result)
-                        $("p").empty();
-                      $("p").text(result);
-                    }
-                });
-            });
-        });
-    </script>
 </body>
 </html>

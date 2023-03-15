@@ -45,18 +45,24 @@ $department = $_POST['department'];
 
 $sql = "INSERT INTO office (First_name, Last_name , Address , Position , Department
 ) VALUES ('$fname','$last_name','$address','$position', '$department')";
-echo $link->query($sql);
+$link->query($sql);
 
-// Fetch all records from table
-// $sql = "SELECT * FROM office";
-// $result = $link->query($sql);
-// $row = mysqli_fetch_array($result);
+// fethching data from the table 
 
-// echo  $row['First_name'] ;
-// echo  $row['Last_name'] ;
-// echo  $row['Address'] ;
-// echo  $row['Position'] ;
-// echo  $row['Department'] ;
+$sql_select = "SELECT * FROM office";
+$result = $link->query($sql_select);
 
+if ($result->num_rows > 0) {
+    
+    // output data of each row
+    while ($row = $result->fetch_assoc()) {
+        echo "<tr><td>" . $row["First_name"] . "</td><td>" . $row["Last_name"] . "</td><td>" 
+        . $row["Address"] . "</td><td>" . $row["Position"] 
+        . "</td><td>" . $row["Department"] . "</td></tr>";
+    }
+    
+} else {
+    echo "0 results";
+}
 
 ?>

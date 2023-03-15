@@ -1,5 +1,6 @@
 .container{
     text-align: center;
+    background-color: rgb(240, 240, 240);
 }
 form {
     display: flex;
@@ -16,7 +17,7 @@ label {
 }
 
 input[type="submit"] {
-    background-color: #4CAF50;
+    background-color: rgb(209, 71, 47);
     color: white;
     border: none;
     border-radius: 5px;
@@ -26,7 +27,7 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #3e8e41;
+    background-color: #f5786b;
 }
 table {
     border-collapse: collapse;
@@ -44,7 +45,7 @@ th, td {
 }
 
 th {
-    background-color: rgb(53, 216, 53);
+    background-color: rgb(209, 71, 47);
 }
 
 tr:nth-child(even) {
