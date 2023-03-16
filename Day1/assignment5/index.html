@@ -5,65 +5,57 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
     <link rel="stylesheet" href="style.css">
+    <title>Insert Data</title>
 </head>
 
 <body>
-    <!DOCTYPE html>
-    <html>
-
-    <head>
-        <title>Insert Data into Table</title>
-    </head>
-
-    <body>
+    
         <div class="container">
-            <h1>MY FAVOURITE MOVIES</h1>
+            <h1>My Favorite Movie</h1>
             <div class="form">
-                <form method="post" id="myform">
+                <form id="myform" method="POST">
+
                     <label for="Title">Title:</label>
-                    <input type="text" id="Title" name="Title" placeholder="Enter movie title"  required>
+                    <input id="title" type="text" id="Title" name="Title" placeholder="Title" required>
 
                     <label for="Rating">Rating:</label>
-                    <input type="number" id="Rating" name="Rating" placeholder="Rating from 0 to 10" min="0" max="10" required>
+                    <input type="number" id="rating" id="Rating" name="Rating" placeholder="Rating" required>
 
-                    <input type="submit" id="submit" value="Add movie">
+                    <input type="submit" name="submit" value="Submit">
                 </form>
             </div>
-           
+
+            <div>
+                <h1> View Data</h1>
+                <table id="mytable" border="1">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Title 
+                                <div class="positionarrow">
+                                <input class="up" type="submit" name="submit" value="&#9650;">
+                                <input class="down" type="submit" name="submit" value="&#9660;">
+                              </div></th>
+                            <th>Rating
+                                <div class="positionarrow">
+                                    <input class="uprating" type="submit" name="submit" value="&#9650;">
+                                    <input class="downrating" type="submit" name="submit" value="&#9660;">
+                            </th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <!-- <script>
-            $(document).ready(function () {
-                $(".table").hide();
-                $("#submit").click(function () {
-                    event.preventDefault();
-                    $.ajax({
-                        url: "connection.php",
-                        type: "POST",
-                        data: $('#myform').serialize(),
-                        // dataType: 'text',
-                        // data: { fname: 'fname', last_name: 'last_name', address: 'address', position: 'position', department: 'department' },
-                        success: function (response) {
-                            $(".table").show();
-                
-                            $('#mytable tbody').append(response)
-                            $('#fname').val('');
-                            $('#last_name').val('');
-                            $('#address').val('');
-                            $('#position').val('');
-                            $('#department').val('');
-                        }
-                    });
+    
 
-                });
-            });
-        </script> -->
-
-    </body>
-
-    </html>
+    
 </body>
 
 </html>

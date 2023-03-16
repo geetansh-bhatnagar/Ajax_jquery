@@ -21,13 +21,16 @@ if (isset($_POST["submit"])) {
 // Allow certain file formats
 if ($imageFile != "jpg" && $imageFile != "png" && $imageFile != "jpeg"
     && $imageFile != "gif") {
-    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+        // echo "wrong format";
+      
+    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed. ";
     $upload = false;
 }
 
 // Check if file already exists
 if (file_exists($target_file)) {
- 
+    echo $target_file = $target_dir . basename($_FILES["image"]["name"]);
+    return;
     // echo "Sorry, file already exists.";
     $upload = false;
 }

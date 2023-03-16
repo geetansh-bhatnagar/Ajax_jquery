@@ -1,7 +1,7 @@
 
             $(document).ready(function () {
                 $(".table").hide();
-                $("#submit").click(function () {
+                $("#submit").click(function (event) {
                     event.preventDefault();
                     $.ajax({
                         url: "connection.php",

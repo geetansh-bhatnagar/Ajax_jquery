@@ -8,9 +8,16 @@ $(document).ready(function (e) {
 			contentType: false,
     	    processData:false,
 			success: function(response)
-		    {  console.log(response);
+            {   
+				
               $("#img").attr("src",response);
-			}	        
+
+			},
+            error: function(xhr, status, error) {
+				// alert("Error in image: " + error)
+                console.log("An error occurred: " + error);
+            }
+
 	   });
 	}));
 });

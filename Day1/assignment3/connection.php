@@ -42,7 +42,7 @@ $last_name = $_POST['last_name'];
 $address = $_POST['address'];
 $position = $_POST['position'];
 $department = $_POST['department'];
-$pattern = "/^[a-zA-Z ]{1,30}$/";
+// $pattern = "/^[a-zA-Z ]{1,30}$/";
 
 
 // if (!(preg_match('([A-Z][a-z]*)([\\s\\\'-][A-Z][a-z]*)*', $fname))) {
