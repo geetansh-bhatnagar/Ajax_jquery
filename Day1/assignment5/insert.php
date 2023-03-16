@@ -1,10 +1,14 @@
 <?php 
+
 include 'connection.php';
 
+// requesting data
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $Title = $_POST['title'];
     $rating = $_POST['rating'];
+
+// validating title and rating through regex
 
     if (!(preg_match('/^[a-zA-Z0-9\s]+$/', $Title))) {
         echo "<script>alert('Invalid First Name')</script>";
@@ -17,6 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     
 
+// if the user entered valid title and rating enter the data into table
 
     $sql = "INSERT INTO movie (Title, Rating) 
             VALUES ('$Title', '$rating' )";
@@ -27,6 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
 
+// to view the table 
 
 $sql_select = "SELECT * FROM movie";
 $result = $conn->query($sql_select);

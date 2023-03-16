@@ -5,7 +5,7 @@ $username = "admin";
 $password = "admin";
 $dbname = "movie";
 
-
+ // establish a connection
   $conn = new mysqli($servername, $username, $password,);
   if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -19,7 +19,10 @@ $dbname = "movie";
   } else {
     echo "Error creating database: " . $conn->error;
   }
+
   $conn->select_db($dbname);
+  // create table if not exist
+  
   $createtb = "CREATE TABLE IF NOT EXISTS movie (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     Title VARCHAR(15),

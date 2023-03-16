@@ -7,7 +7,7 @@ $(document).ready(function () {
         title: $("#title").val(),
         rating: $("#rating").val(),
       };
-  
+  // using ajax to load data
       $.ajax({
         type: "POST",
         url: "insert.php",
@@ -53,7 +53,9 @@ $(document).ready(function () {
     });
   });
 
+// what will happen if user click on arrows to sort
   $(document).ready(function () {
+
     $('.up').on('click', function () {
       sortTable(1, true)
     })
@@ -67,6 +69,8 @@ $(document).ready(function () {
     $('.downrating').on('click', function () {
       sortTable(2, false)
     })
+
+  // function that will be called to do actual sorting
   
     function sortTable (n, asc) {
       var table, rows, switching, i, x, y, shouldSwitch, dir, cmp
