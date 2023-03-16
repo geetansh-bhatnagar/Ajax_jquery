@@ -52,3 +52,53 @@ $(document).ready(function () {
       event.preventDefault();
     });
   });
+
+  $(document).ready(function () {
+    $('.up').on('click', function () {
+      sortTable(1, true)
+    })
+    $('.down').on('click', function () {
+      sortTable(1, false)
+    })
+  
+    $('.uprating').on('click', function () {
+      sortTable(2, true)
+    })
+    $('.downrating').on('click', function () {
+      sortTable(2, false)
+    })
+  
+    function sortTable (n, asc) {
+      var table, rows, switching, i, x, y, shouldSwitch, dir, cmp
+      table = document.getElementById('mytable')
+      switching = true
+      dir = asc ? 1 : -1
+      while (switching) {
+        switching = false
+        rows = table.rows
+        for (i = 1; i < rows.length - 1; i++) {
+          shouldSwitch = false
+          x = rows[i].getElementsByTagName('TD')[n]
+          y = rows[i + 1].getElementsByTagName('TD')[n]
+          if (n === 2) {
+            if (dir*Number(x.innerHTML) < dir*Number(y.innerHTML)) {
+              shouldSwitch = true
+              break
+            }
+          } else {
+            cmp = x.innerHTML
+              .toLowerCase()
+              .localeCompare(y.innerHTML.toLowerCase())
+            if (dir * cmp > 0) {
+              shouldSwitch = true
+              break
+            }
+          }
+        }
+        if (shouldSwitch) {
+          rows[i].parentNode.insertBefore(rows[i + 1], rows[i])
+          switching = true
+        }
+      }
+    }
+  })
