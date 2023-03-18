@@ -10,15 +10,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // validating title and rating through regex
 
-    if (!(preg_match('/^[a-zA-Z0-9\s]+$/', $Title))) {
-        echo "<script>alert('Invalid First Name')</script>";
-        return;
-    }
-    
-    if (!(preg_match('/^(?:[1-9]|10)$/', $rating))) {
-        echo "<script>alert('Invalid Rating Name')</script>";
-        return;
-    }
+if (!(preg_match('/^[a-zA-Z0-9\s]+$/', $Title))) {
+    echo "<script>alert('Invalid First Name')</script>";
+    return;
+}
+
+if (!(preg_match('/^(?:[1-9]|10)$/', $rating))) {
+    echo "<script>alert('Invalid Rating Name')</script>";
+    return;
+}
     
 
 // if the user entered valid title and rating enter the data into table

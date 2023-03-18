@@ -9,6 +9,7 @@ $(document).ready(function () {
       };
   // using ajax to load data
       $.ajax({
+        
         type: "POST",
         url: "insert.php",
         data: formData,
