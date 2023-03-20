@@ -26,13 +26,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 "success" => true
             );
             echo json_encode($return_arr);
-            die();
-        } else {
-            echo '<script>alert("Invalid password"); window.location.href = "index.php";</script>';
             exit;
+        } else {
+            $return_arr[] = array(
+                "success" => false
+            );
+            echo json_encode($return_arr);
+            exit;
+            // echo '<script>alert("Invalid password"); window.location.href = "index.php";</script>';
+          
         }
-    } else {
-        echo '<script>alert("Invalid Username"); window.location.href = "index.php";</script>';
+    } 
+    else {
+        // echo '<script>alert("Invalid Username"); window.location.href = "index.php";</script>';
+        $return_arr[] = array(
+            "success" => false
+        );
+        echo json_encode($return_arr);
         exit;
     }
 }

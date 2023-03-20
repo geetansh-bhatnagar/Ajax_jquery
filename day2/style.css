@@ -73,4 +73,13 @@ body {
   a {
 	color: #dfdfe2;
   }
-  
+ #btn{
+	width: 23.6%;
+	margin: 0em auto;
+	height: 2em;
+	font-size: 1.1rem;
+	background-color: #3b3b4f;
+	border-color: white;
+	margin-left: 38.4%;
+	color: white;
+ }

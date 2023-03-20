@@ -29,47 +29,86 @@ $(document).ready(function() {
 
 
 $(document).ready(function() {
-    $('#tabledata').submit(function(event) {
-
+   
+    
+    
+    $('#myform').submit(function(event) {
+        
         var formData = {
-            userId: $('#userid').val(),
-            title: $('#Post_title').val(),
-            description: $('#Post_description').val(),
+            user_id: $('#user_id').val(),
+            post_name: $('#post_name').val(),
+            post_description: $('#post_description').val(),
         };
 
         $.ajax({
             type: 'POST',
-            url: 'insert.php',
+            url: 'view-connection.php',
             data: formData,
             dataType: 'json',
             encode: true,
             success: function(response) {
-                window.location.href = "view.html";
-                $('#mytable tbody').empty()
+                // Clear previous table rows
+                console.log("test1");
+                $("#mytable tbody").empty();
+                // window.location.href = "view.html";
+               
                 var len = response.length
                 for (var i = 0; i < len; i++) {
                 var id = response[i].id
-                var userid = response[i].userId
-                var title = response[i].Title
-                var description = response[i].description
+                var user_id = response[i].user_id
+                var post_name = response[i].post_name
+                var post_description = response[i].post_description
                 var tr_str =
                     '<tr>' +
                     '<td>' + id + '</td>' +
-                    '<td>' + userid + '</td>' +
-                    '<td>' + title +  '</td>' +
-                    '<td>' +  description +  '</td>' +
-                    "<td><button  class='deleteBtn' data-id='" + id +"'>Delete</button></td>" +
+                    '<td>' + user_id + '</td>' +
+                    '<td>' + post_name +  '</td>' +
+                    '<td>' +  post_description +  '</td>' +
+                    '<td><button class="deleteBtn" style="background-color: rgb(209, 71, 47); color: white;" data-id="' + id + '">Delete</button></td>' +
+                    '<td><button class="EditBtn" style="background-color: rgb(209, 71, 47); color: white;" data-id="' + id + '">Edit</button></td>' +
                     '</tr>'
                     $('#mytable tbody').append(tr_str)
-                    $('#title').val('')
-                    $('#rating').val('')
+                    $('#post_name').val(' ')
+                    $('#user_id').val(' ')
+                    $('#post_description').val(' ')
                     
                 }
+                $(".deleteBtn").on("click", function () {
+                    var id = $(this).data("id");
+                    var row = $(this).closest("tr");
+                    $.ajax({
+                        type: "POST",
+                        url: "delete.php",
+                        data: { id: id },
+                        success: function () {
+                          
+                            row.remove();
+                        }
+                    });
+                });
+                $(".editBtn").on("click", function () {
+                    var id = $(this).data("id");
+                    var row = $(this).closest("tr");
+                    $.ajax({
+                        type: "POST",
+                        url: "delete.php",
+                        data: { id: id },
+                        success: function () {
+                          
+                            row.remove();
+                        }
+                    });
+                });
+
                     },
             error: function(xhr, status, error) {
                 console.log("Error:", error);
             }
+
+
         });
+        
         event.preventDefault();
     });
+    
 });

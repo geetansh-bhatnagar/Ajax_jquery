@@ -1,0 +1,73 @@
+.container{
+    text-align: center;
+    background-color: rgb(240, 240, 240);
+}
+#myform {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+    margin-left: 18%;
+    gap: 10px;
+}
+
+label {
+    margin-right: 10px;
+    /* width: 80px; */
+    font-weight: bold;
+}
+input[type="text"]{
+font-size: 15px;
+}
+input[type="number"]{
+    font-size: 15px;
+    width: 169px;
+    }
+input[type="submit"] {
+    background-color: rgb(209, 71, 47);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #f5786b;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid ;
+    
+    font-family: Arial, sans-serif;
+}
+
+th {
+    background-color: rgb(209, 71, 47);
+}
+
+tr:nth-child(even) {
+    background-color: #fff5f5;
+}
+
+tr:hover {
+    background-color: #ffe6e6;
+}
+/* .deleteBtn{
+	background-color: rgb(209, 71, 47);
+    color: white;
+  }
+  .editBtn{
+	background-color: rgb(209, 71, 47);
+    color: white;
+  } */
