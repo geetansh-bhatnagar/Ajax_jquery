@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   // Define regex patterns
   $namePattern = '/^[a-zA-Z]+$/';
   $emailPattern = '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
-  $passwordPattern = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/';
+  $passwordPattern = '/^(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/';
 
   // Validate input fields against regex patterns
   if (!preg_match($namePattern, $firstName)) {
@@ -37,14 +37,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo json_encode($return_arr);
     exit;
   }
-  // if (!preg_match($passwordPattern, $password)) {
-  //   $return_arr[] = array(
-  //     "success" => false,
-  //     "message" => "Password must contain at least 8 characters, including at least one uppercase letter, one lowercase letter, and one number",
-  //   );
-  //   echo json_encode($return_arr);
-  //   exit;
-  // }
+  if (!preg_match($passwordPattern, $password)) {
+    $return_arr[] = array(
+      "success" => false,
+      "message" => "Password must contain at least 8 characters, including at least one uppercase letter, one lowercase letter, one number and one special character",
+    );
+    echo json_encode($return_arr);
+    exit;
+  }
 
 
   // Prepare the statement
