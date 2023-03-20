@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="script.js"></script>
+    <script src="modified.js"></script>
     <link rel="stylesheet" href="veiw.css">
     <title>Insert Data</title>
 </head>
@@ -15,32 +15,14 @@
 <body>
 
     <div class="container">
-        <h1>Posts</h1>
-        <a href="modified.html"><button style=" background-color: rgb(209, 71, 47);
+        <h1>Table posts</h1> 
+        <a href="veiw.html"><button style=" background-color: rgb(209, 71, 47);
             color: white;
             border: none;
             border-radius: 5px;
             padding: 10px 20px;
             font-size: 16px;
-            cursor: pointer;">View Posts table</button></a>
-        <div class="form">
-            <form id="myform" method="POST">
-
-                <label for="user_id">User id:</label>
-                <input type="number" id="user_id" name="user_id" placeholder="user_id" required>
-
-                <label for="post_name">Post Name:</label>
-                <input type="text" id="post_name" name="post_name" placeholder="post_name" required>
-                <label for="post_description">Post Description:</label>
-                <input type="text area" id="post_description" name="post_description" placeholder="post_description"
-                    required>
-
-                <input type="submit" name="submit" value="Add post">
-            </form>
-        </div>
-
-        <div>
-            <h1> View Data</h1>
+            cursor: pointer;">Insert data again</button></a>
             <table id="mytable" border="1">
                 <thead>
                     <tr>
@@ -50,8 +32,7 @@
                         </th>
                         <th>Post Description
                         </th>
-                        <th>Delete</th>
-                        <th>Edit</th>
+            
                     </tr>
                 </thead>
                 <tbody>

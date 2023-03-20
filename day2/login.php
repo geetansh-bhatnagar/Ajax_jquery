@@ -8,8 +8,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $conn->select_db($dbname);
 
-    $query = "SELECT `email`,`password` FROM users";
-    $result = $conn->query($query);
+    $query = "SELECT `email`,`password` FROM users WHERE email = ? LIMIT 1";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     if ($result === false) {
         // display any database errors
@@ -17,11 +20,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    // fetch all rows into an array
-    $rows = $result->fetch_all(MYSQLI_ASSOC);
+    // fetch the row into an array
+    $row = $result->fetch_assoc();
 
-    if (checkusername($rows, $email)) {
-        if (checkpassword($rows, $password)) {
+    if ($row !== null) {
+        if ($password === $row['password']) {
             $return_arr[] = array(
                 "success" => true
             );
@@ -33,36 +36,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             );
             echo json_encode($return_arr);
             exit;
-            // echo '<script>alert("Invalid password"); window.location.href = "index.php";</script>';
-          
         }
     } 
     else {
-        // echo '<script>alert("Invalid Username"); window.location.href = "index.php";</script>';
         $return_arr[] = array(
             "success" => false
         );
         echo json_encode($return_arr);
         exit;
     }
-}
-
-function checkpassword($rows, $password)
-{
-    foreach ($rows as $row) {
-        if ($row["password"] == $password) {
-            return true;
-        }
-    }
-    return false;
-}
-
-function checkusername($rows, $email)
-{
-    foreach ($rows as $row) {
-        if ($row["email"] == $email) {
-            return true;
-        }
-    }
-    return false;
 }

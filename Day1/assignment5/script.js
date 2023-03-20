@@ -28,7 +28,7 @@ $(document).ready(function () {
                   "<td>" + id + "</td>" +
                   "<td>" + title + "</td>" +
                   "<td>" + rating + "</td>" +
-                  "<td><button class='deleteBtn' data-id='" + id + "'>Delete</button></td>" +
+                  '<td><button class="deleteBtn" style="background-color: rgb(209, 71, 47); color: white;" data-id="' + id + '">Delete</button></td>' +
                   "</tr>";
               $("#mytable tbody").append(tr_str);
               $('#title').val('');

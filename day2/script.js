@@ -15,8 +15,11 @@ $(document).ready(function() {
             dataType: 'json',
             encode: true,
             success: function(response) {
-                if(response){
+                if(response[0] ['success']){
                     window.location.href = "login.html";
+                }
+                else{
+                    alert(response[0] ['message'])
                 }
             },
             error: function(xhr, status, error) {
@@ -48,7 +51,7 @@ $(document).ready(function() {
             encode: true,
             success: function(response) {
                 // Clear previous table rows
-                console.log("test1");
+              
                 $("#mytable tbody").empty();
                 // window.location.href = "view.html";
                
@@ -77,6 +80,7 @@ $(document).ready(function() {
                     var id = $(this).data("id");
                     var row = $(this).closest("tr");
                     $.ajax({
+                        
                         type: "POST",
                         url: "delete.php",
                         data: { id: id },
@@ -86,18 +90,10 @@ $(document).ready(function() {
                         }
                     });
                 });
-                $(".editBtn").on("click", function () {
+                $(".EditBtn").on("click", function () {
                     var id = $(this).data("id");
-                    var row = $(this).closest("tr");
-                    $.ajax({
-                        type: "POST",
-                        url: "delete.php",
-                        data: { id: id },
-                        success: function () {
-                          
-                            row.remove();
-                        }
-                    });
+                    sessionStorage.setItem('id', id );
+                    window.location.href = 'edit.html';
                 });
 
                     },
