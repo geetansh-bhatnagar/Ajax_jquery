@@ -61,12 +61,12 @@ $(document).ready(function() {
                 var user_id = response[i].user_id
                 var post_name = response[i].post_name
                 var post_description = response[i].post_description
-                // var user_id = $(this).data("user_id");
-                sessionStorage.setItem('user_id', user_id );
-                var post_name = $(this).data("post_name");
-                sessionStorage.setItem('post_name', post_name );
-                var post_description = $(this).data("post_description");
-                sessionStorage.setItem('post_description', post_description );
+                // // var user_id = $(this).data("user_id");
+                // sessionStorage.setItem('user_id', user_id );
+                // // var post_name = $(this).data("post_name");
+                // sessionStorage.setItem('post_name', post_name );
+                // // var post_description = $(this).data("post_description");
+                // sessionStorage.setItem('post_description', post_description );
                 var tr_str =
                     '<tr>' +
                     '<td>' + id + '</td>' +

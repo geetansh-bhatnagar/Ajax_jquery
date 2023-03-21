@@ -1,7 +1,9 @@
 <?php
 include 'view-connection.php';
 $sql_select = "SELECT * FROM posts";
-$result = $conn->query($sql_select);
+$stmt = $conn->prepare($sql_select);
+$stmt->execute();
+$result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
