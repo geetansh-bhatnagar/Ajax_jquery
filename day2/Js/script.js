@@ -10,7 +10,7 @@ $(document).ready(function() {
 
         $.ajax({
             type: 'POST',
-            url: 'signin.php',
+            url: 'php/signin.php',
             data: formData,
             dataType: 'json',
             encode: true,
@@ -45,7 +45,7 @@ $(document).ready(function() {
 
         $.ajax({
             type: 'POST',
-            url: 'view-connection.php',
+            url: 'php/view-connection.php',
             data: formData,
             dataType: 'json',
             encode: true,
@@ -88,7 +88,7 @@ $(document).ready(function() {
                     $.ajax({
                         
                         type: "POST",
-                        url: "delete.php",
+                        url: "php/delete.php",
                         data: { id: id },
                         success: function () {
                           
@@ -106,7 +106,7 @@ $(document).ready(function() {
                     // sessionStorage.setItem('post_name', post_name );
                     // var post_description = $(this).data("post_description");
                     // sessionStorage.setItem('post_description', post_description );
-                    window.location.href = 'edit.html';
+                    window.location.href = '/edit.html';
                 });
 
                     },

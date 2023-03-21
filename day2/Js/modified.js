@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $.ajax({
       type: "GET",
-      url: "modified.php", 
+      url: "php/modified.php", 
       dataType: "json",
       success: function(response) {
         $("#mytable tbody").empty();
@@ -29,7 +29,7 @@ $(document).ready(function() {
         $.ajax({
             
             type: "POST",
-            url: "delete.php",
+            url: "php/delete.php",
             data: { id: id },
             success: function () {
               
