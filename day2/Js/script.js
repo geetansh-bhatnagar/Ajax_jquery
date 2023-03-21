@@ -106,7 +106,7 @@ $(document).ready(function() {
                     // sessionStorage.setItem('post_name', post_name );
                     // var post_description = $(this).data("post_description");
                     // sessionStorage.setItem('post_description', post_description );
-                    window.location.href = '/edit.html';
+                    window.location.href = 'edit.html';
                 });
 
                     },
