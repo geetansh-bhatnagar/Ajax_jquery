@@ -1,48 +1,62 @@
-<?php
+<?php include 'connection.php';
 
-include 'connection.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = $_POST['email'];
+    $username = $_POST['email'];
     $password = $_POST['password'];
 
     $conn->select_db($dbname);
 
-    $query = "SELECT `email`,`password` FROM users WHERE email = ? LIMIT 1";
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $result = $stmt->get_result();
+    $query = "SELECT `email`,`password` FROM users";
+    $result = $conn->query($query);
 
     if ($result === false) {
-        // display any database errors
         echo 'Error: ' . mysqli_error($conn);
         exit;
     }
 
-    // fetch the row into an array
-    $row = $result->fetch_assoc();
+    $rows = $result->fetch_all(MYSQLI_ASSOC);
 
-    if ($row !== null) {
-        if ($password === $row['password']) {
+    if (checkusername($rows, $username)) {
+        if (checkpassword($rows, $password)) {
             $return_arr[] = array(
                 "success" => true
             );
             echo json_encode($return_arr);
-            exit;
+            die();
         } else {
             $return_arr[] = array(
-                "success" => false
+                "message" => "Wrong Password",
             );
             echo json_encode($return_arr);
-            exit;
+            return;
         }
-    } 
-    else {
+    } else {
         $return_arr[] = array(
-            "success" => false
+            "message" => "Wrong Email",
+
         );
         echo json_encode($return_arr);
-        exit;
+        return;
     }
+}
+
+function checkpassword($rows, $password)
+{
+    foreach ($rows as $row) {
+        if ($row["password"] == $password) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function checkusername($rows, $username)
+{
+    foreach ($rows as $row) {
+        if ($row["email"] == $username) {
+            return true;
+        }
+    }
+    return false;
 }

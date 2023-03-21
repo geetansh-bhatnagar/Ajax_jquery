@@ -13,17 +13,11 @@ $(document).ready(function() {
         dataType: 'json',
         encode: true,
         success: function(response) {
-          console.log(response);
-          if (response[0].success == true) {
-            window.location.href = "veiw.html";
-            $('#username').val('');
-            $('#password').val('');
-          }
-          else if(response[0].success == false){
-            alert('You are not a registered user!!!');
-            window.location.href = 'index.html';
-        } 
-        },
+          if (response[0]['success']) {
+            window.location.href = 'veiw.html'
+          } else {
+            alert(response[0]['message'])
+          }},
         error: function(xhr, status, error) {
           console.log("Error:", error);
         }
