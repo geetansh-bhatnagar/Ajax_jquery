@@ -37,6 +37,18 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #f5786b;
 }
+#bts{
+    background-color: rgb(209, 71, 47);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+}
+#bts:hover{
+    background-color: #f5786b;
+}
 table {
     border-collapse: collapse;
     width: 100%;
